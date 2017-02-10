@@ -3,16 +3,16 @@ library(plyr)
 library(dplyr)
 
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "data.zip")
-unzip("~/getdata_projectfiles_UCI HAR Dataset.zip")
+unzip("data.zip")
 
-test <- read.table("~/UCI HAR Dataset/test/X_test.txt")
-train <- read.table("~/UCI HAR Dataset/train/X_train.txt")
-features <- read.table("~/UCI HAR Dataset/features.txt")
-ytest <- read.table("~/UCI HAR Dataset/test/y_test.txt")
-ytrain <- read.table("~/UCI HAR Dataset/train/y_train.txt")
-subject_test <- read.table("~/UCI HAR Dataset/test/subject_test.txt")
-subject_train <- read.table("~/UCI HAR Dataset/train/subject_train.txt")
-activity_labels <- read.table("~/UCI HAR Dataset/activity_labels.txt")
+test <- read.table("UCI HAR Dataset/test/X_test.txt")
+train <- read.table("UCI HAR Dataset/train/X_train.txt")
+features <- read.table("UCI HAR Dataset/features.txt")
+ytest <- read.table("UCI HAR Dataset/test/y_test.txt")
+ytrain <- read.table("UCI HAR Dataset/train/y_train.txt")
+subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt")
+subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt")
+activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
 
 
 #Appropriately labels the data set with descriptive variable names.
@@ -39,6 +39,6 @@ mean_and_std <- select(mydata, contains("Mean"), contains("std"))
 mydata2 <- aggregate(mean_and_std, by=list(subject = mydata$subject, activity = mydata$activity), mean)
 
 #Export datasets to files
-write.table(mydata,file="~/UCI HAR Dataset/TidyData_FULL.txt",row.names=TRUE,col.names=TRUE, sep=",")
-write.table(mydata2,file="~/UCI HAR Dataset/Mean_and_std_grouped.txt",row.names=TRUE,col.names=TRUE, sep=",")
-write.table(mean_and_std,file="~/UCI HAR Dataset/Mean_and_std.txt",row.names=TRUE,col.names=TRUE, sep=",")
+write.table(mydata,file="TidyData_FULL.txt",row.names=TRUE,col.names=TRUE, sep=",")
+write.table(mydata2,file="Mean_and_std_grouped.txt",row.names=TRUE,col.names=TRUE, sep=",")
+write.table(mean_and_std,file="Mean_and_std.txt",row.names=TRUE,col.names=TRUE, sep=",")

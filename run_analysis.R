@@ -40,5 +40,5 @@ mydata2 <- aggregate(mean_and_std, by=list(subject = mydata$subject, activity = 
 
 #Export datasets to files
 write.table(mydata,file="TidyData_FULL.txt",row.names=TRUE,col.names=TRUE, sep=",")
-write.table(mydata2,file="Mean_and_std_grouped.txt",row.names=TRUE,col.names=TRUE, sep=",")
+write.table(mydata2,file="Mean_and_std_grouped.txt",row.names=FALSE,col.names=TRUE, sep=",")
 write.table(mean_and_std,file="Mean_and_std.txt",row.names=TRUE,col.names=TRUE, sep=",")
